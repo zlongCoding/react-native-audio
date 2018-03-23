@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 
 import Login from '../pages/account/login'
 import Slider from '../pages/slider/index'
-// import Boot from '../components/boot'
+import Boot from '../components/boot'
 import Tabs from './tabs'
 import * as appActions from '../actions/app'
 
@@ -18,14 +18,14 @@ class App extends Component<Props> {
     super(props)
   }
 
-  // componentDidMount () {
-  //   this.props.willEnterApp()
-  // }
+  componentDidMount () {
+    this.props.willEnterApp()
+  }
 
   render () {
-    // if (!this.props.booted) {
-    //   return <Boot {...this.props} />
-    // }
+    if (!this.props.booted) {
+      return <Boot {...this.props} />
+    }
 
     if (!this.props.entered) {
       return <Slider {...this.props} />

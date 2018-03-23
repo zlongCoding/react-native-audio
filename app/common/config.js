@@ -12,18 +12,18 @@ export default {
     avatar: 'http://res.cloudinary.com/gougou/image/upload/gougou.png'
   },
   qiniu: {
-    video: 'http://p5u04gsl9.bkt.clouddn.com/',
-    thumb: 'http://p5u04gsl9.bkt.clouddn.com/',
+    video: 'http://p602wqzqa.bkt.clouddn.com/',
+    thumb: 'http://p602wqzqa.bkt.clouddn.com/',
     avatar: 'http://p5u04gsl9.bkt.clouddn.com/',
-    upload: 'http://upload.qiniu.com'
+    upload: 'https://upload.qiniu.com'
   },
   cloudinary: {
     cloud_name: 'shanghai-zhiyin',  
     api_key: '755435465729744',  
     base: '	http://res.cloudinary.com/shanghai-zhiyin',
-    image: 'https://res.cloudinary.com/shanghai-zhiyin/image/upload',
-    video: 'https://res.cloudinary.com/shanghai-zhiyin/video/upload',
-    audio: 'https://res.cloudinary.com/shanghai-zhiyin/raw/upload',
+    image: 'https://api.cloudinary.com/v1_1/shanghai-zhiyin/image/upload',
+    video: 'https://api.cloudinary.com/v1_1/shanghai-zhiyin/video/upload',
+    audio: 'https://api.cloudinary.com/v1_1/shanghai-zhiyin/raw/upload',
   },
   api: {
     creations: baseUrl + 'api/creations',

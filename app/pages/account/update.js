@@ -93,7 +93,7 @@ export default class AccountUpdate extends Component<Props> {
               uri: uri,
               name: key
             })
-
+            
             that._upload(body)
           }
         })
@@ -105,13 +105,19 @@ export default class AccountUpdate extends Component<Props> {
     const xhr = new XMLHttpRequest()
     const url = config.qiniu.upload
 
-    this.setState({
-      avatarUploading: true,
-      avatarProgress: 0
-    })
+    // this.setState({
+    //   avatarUploading: true,
+    //   avatarProgress: 0
+    // })
 
-    xhr.open('POST', url)
+    xhr.open('POST', url, true)
+    xhr.setRequestHeader("Content-Type", "application/octet-stream")
+    xhr.send(body)
+    xhr.onerror = function(err){
+       console.log(err)
+    }
     xhr.onload = () => {
+      
       if (xhr.status !== 200) {
         that.props.popAlert('呜呜~', '上传失败，稍后重试')
 
@@ -132,7 +138,7 @@ export default class AccountUpdate extends Component<Props> {
       catch (e) {
         that.props.popAlert('呜呜~', '返回数据异常，稍后重试')
       }
-
+     console.log(response)
       if (response) {
         let user = this.state.user
 
@@ -165,8 +171,6 @@ export default class AccountUpdate extends Component<Props> {
         }
       }
     }
-
-    xhr.send(body)
   }
 
   _asyncUser() {
@@ -210,7 +214,7 @@ export default class AccountUpdate extends Component<Props> {
               <Text style={styles.avatarTip}>戳这里换头像</Text>
           </TouchableOpacity>
           : <TouchableOpacity onPress={this._pickPhoto.bind(this)} style={styles.avatarContainer}>
-            <Text style={styles.avatarTip}>添加狗狗头像</Text>
+            <Text style={styles.avatarTip}>添加头像</Text>
             <View style={styles.avatarBox}>
               {
                 this.state.avatarUploading
@@ -245,10 +249,10 @@ export default class AccountUpdate extends Component<Props> {
           </View>
 
           <View style={styles.fieldItem}>
-            <Text style={styles.label}>品种</Text>
+            <Text style={styles.label}>地址</Text>
             <TextInput
               underlineColorAndroid='transparent'
-              placeholder={'狗狗的品种'}
+              placeholder={'填写详细地址'}
               style={styles.inputField}
               autoCapitalize={'none'}
               autoCorrect={false}
@@ -263,7 +267,7 @@ export default class AccountUpdate extends Component<Props> {
             <Text style={styles.label}>年龄</Text>
             <TextInput
               underlineColorAndroid='transparent'
-              placeholder={'狗狗的年龄'}
+              placeholder={'年龄'}
               style={styles.inputField}
               autoCapitalize={'none'}
               autoCorrect={false}

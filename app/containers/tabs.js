@@ -17,7 +17,8 @@ import {
 
 import {
   TabNavigator,
-  StackNavigator
+  StackNavigator,
+  TabBarBottom
 } from 'react-navigation'
 
 const headerStyle = {
@@ -36,7 +37,7 @@ const ListTab = StackNavigator({
   List: {
     screen: List,
     navigationOptions: {
-      headerTitle: '狗狗说',
+      headerTitle: '你说',
       headerStyle: headerStyle[Platform.OS],
       headerTintColor: '#fff',
       tabBarIcon: ({tintColor, focused}) => (
@@ -86,7 +87,7 @@ const AccountTab = StackNavigator({
   Account: {
     screen: Account,
     navigationOptions: ({navigation}) => ({
-      headerTitle: '狗狗的账户',
+      headerTitle: '账户信息',
       headerStyle: headerStyle[Platform.OS],
       headerTintColor: '#fff',
       headerRight: (
@@ -121,6 +122,7 @@ const AccountTab = StackNavigator({
 
 const barOptions = {
   ios: {
+    tabBarComponent: TabBarBottom,
     tabBarPosition: 'bottom',
     lazyload: true,
     tabBarOptions: {
@@ -139,7 +141,8 @@ const barOptions = {
     }
   },
   android: {
-    tabBarPosition: 'top',
+    tabBarComponent: TabBarBottom,
+    tabBarPosition: 'bottom',
     lazyload: true,
     tabBarOptions: {
       activeTintColor: '#ee735c',
@@ -163,12 +166,12 @@ const Tabs = TabNavigator({
   ListTab: {
     screen: ListTab,
     navigationOptions: {
-      tabBarLabel: '狗狗说'
+      tabBarLabel: '你说'
     }
   },
   EditTab: {
     screen: Edit,
-    title: '理解狗狗，从配音开始',
+    title: '理解你，从配音开始',
     navigationOptions: {
       tabBarLabel: '来一段',
       headerTitle: '编辑视频',

@@ -1,14 +1,34 @@
-import React, { Component } from 'react'
-import {
-  View,
-  Text,
-  StyleSheet
-} from 'react-native'
+import React, {Component} from 'react'
+import {bindActionCreators} from 'redux'
+import {connect} from 'react-redux'
 
-export default class edit extends Component <Props> {
-	render() {
-		return (
-      <View><Text>aaaa</Text></View>
-		)
-	}
+import Edit from '../pages/creation/edit'
+import * as creationActions from '../actions/creation'
+
+class EditContainer extends Component<Props> {
+  constructor (props) {
+    super(props)
+  }
+
+  render () {
+    return (
+      <Edit {...this.props} />
+    )
+  }
 }
+
+function mapStateToProps (state) {
+  const {
+    user
+  } = state.get('app')
+
+  return {
+    user
+  }
+}
+
+function mapDispatchToProps (dispatch) {
+  return bindActionCreators(creationActions, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditContainer)

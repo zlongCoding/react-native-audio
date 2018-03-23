@@ -26,7 +26,7 @@ export default class Account extends Component<Props> {
           <Text style={styles.label}>头像</Text>
           <View style={styles.avatarBox}>
             <Image
-              source={{uri: util.avatar(user.avatar, 'image')}}
+              source={{uri: util.avatar(user.avatar)}}
               style={styles.avatar} />
           </View>
         </View>
@@ -35,7 +35,7 @@ export default class Account extends Component<Props> {
           <Text style={styles.content}>{user.nickname}</Text>
         </View>
         <View style={styles.fieldItem}>
-          <Text style={styles.label}>品种</Text>
+          <Text style={styles.label}>地址</Text>
           <Text style={styles.content}>{user.breed}</Text>
         </View>
         <View style={styles.fieldItem}>

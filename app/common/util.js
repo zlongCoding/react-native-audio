@@ -18,7 +18,7 @@ exports.avatar = function(key) {
   if (key.indexOf('avatar/') > -1) {
     return config.cloudinary.base + '/image/upload/' + key
   }
-
+  console.log(config.qiniu.avatar + key)
   return config.qiniu.avatar + key
 }
 
